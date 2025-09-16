@@ -1,0 +1,186 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import {
+  Box,
+  Divider,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
+} from "@mui/material";
+import Logo from "../logo/logo";
+import { Inventory2 } from "@mui/icons-material";
+import SpeedIcon from "@mui/icons-material/Speed";
+import GridViewIcon from "@mui/icons-material/GridView";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import ChecklistIcon from "@mui/icons-material/Checklist";
+import { usePathname } from "next/navigation";
+import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import ContentPasteIcon from "@mui/icons-material/ContentPaste";
+import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
+import { NavElement, SidebarNav } from "@/types/types";
+import SidebarItem from "./app-sidebar-item";
+import PaymentsIcon from "@mui/icons-material/Payments";
+import BarChartIcon from "@mui/icons-material/BarChart";
+import PermIdentityIcon from "@mui/icons-material/PermIdentity";
+import GridOnIcon from "@mui/icons-material/GridOn";
+import MenuIcon from "@mui/icons-material/Menu";
+
+const sidebarNav: SidebarNav = {
+  admin: [
+    {
+      navName: "Dashboard",
+      icon: SpeedIcon,
+      href: "/dashboard",
+    },
+    {
+      navName: "Products",
+      icon: GridViewIcon,
+      href: "/products",
+    },
+    {
+      navName: "Favorites",
+      icon: FavoriteBorderIcon,
+      href: "/favorites",
+    },
+    {
+      navName: "Inbox",
+      icon: MailOutlineIcon,
+      href: "/inbox",
+    },
+    {
+      navName: "Order Lists",
+      icon: ChecklistIcon,
+      href: "/order-list",
+    },
+    {
+      navName: "Product Stock",
+      icon: Inventory2,
+      href: "/product-stock",
+    },
+  ],
+  pages: [
+    {
+      navName: "Pricing",
+      icon: CardGiftcardIcon,
+      href: "/pricing",
+    },
+    {
+      navName: "Calender",
+      icon: CalendarMonthIcon,
+      href: "/calendar",
+    },
+    {
+      navName: "To-Do",
+      icon: ContentPasteIcon,
+      href: "/to-do",
+    },
+    {
+      navName: "Contact",
+      icon: PeopleOutlineIcon,
+      href: "/contact",
+    },
+    {
+      navName: "Invoice",
+      icon: PaymentsIcon,
+      href: "/invoice",
+    },
+    {
+      navName: "UI Elements",
+      icon: BarChartIcon,
+      href: "/ui-elements",
+    },
+    {
+      navName: "Team",
+      icon: PermIdentityIcon,
+      href: "/team",
+    },
+    {
+      navName: "Table",
+      icon: GridOnIcon,
+      href: "/table",
+    },
+  ],
+};
+
+const Sidebar = () => {
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const updateHeight = () => {
+      document.documentElement.style.setProperty(
+        "--app-height",
+        `${window.innerHeight}px`
+      );
+    };
+
+    updateHeight();
+    window.addEventListener("resize", updateHeight);
+
+    return () => window.removeEventListener("resize", updateHeight);
+  }, []);
+
+  return (
+    <>
+      <Box
+        sx={{
+          position: { xs: "fixed", md: "relative" },
+          top: 0,
+          left: 0,
+          height: "var(--app-height)",
+          minWidth: "240px",
+          maxWidth: "240px",
+          background: "#FFFFFF",
+          borderRight: "1px solid #E8E8E8",
+          zIndex: 1200,
+          transition: "transform 0.3s ease-in-out",
+          transform: {
+            xs: isOpen ? "translateX(0)" : "translateX(-100%)",
+            md: "translateX(0)",
+          },
+          overflowY: "scroll",
+        }}
+      >
+        {/* Admin nav */}
+        <List>
+          <ListItem sx={{ paddingTop: "24px", paddingBottom: "30px" }}>
+            <Logo />
+          </ListItem>
+          {sidebarNav.admin.map((navItem: NavElement) => (
+            <SidebarItem
+              key={navItem.navName}
+              navItem={navItem}
+              pathname={pathname}
+            />
+          ))}
+        </List>
+
+        {/* Line */}
+        <Divider sx={{ width: "100%", height: "1px", background: "#E0E0E0" }} />
+
+        {/* Pages nav */}
+        <List>
+          <ListItem sx={{ pl: "35px", py: "16px" }}>
+            <ListItemText
+              sx={{ opacity: "60%", textTransform: "uppercase" }}
+              primary="Pages"
+            />
+          </ListItem>
+          {sidebarNav.pages.map((navItem: NavElement) => (
+            <SidebarItem
+              key={navItem.navName}
+              navItem={navItem}
+              pathname={pathname}
+            />
+          ))}
+        </List>
+      </Box>
+    </>
+  );
+};
+
+export default Sidebar;
