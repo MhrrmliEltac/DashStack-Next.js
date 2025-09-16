@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${nunitoSans.variable} antialiased flex`}>
+      <body className={`${nunitoSans.variable} antialiased flex relative`}>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <Sidebar />

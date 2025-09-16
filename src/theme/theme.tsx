@@ -8,6 +8,11 @@ export const theme = createTheme({
       fontSize: 32,
       fontWeight: 800,
     },
+    h2: {
+      fontSize: 28,
+      fontWeight: 800,
+      letterSpacing: "1px",
+    },
     h3: {
       fontSize: 24,
       fontWeight: 700,
@@ -16,6 +21,14 @@ export const theme = createTheme({
     h4: {
       fontSize: 20,
       fontWeight: 800,
+    },
+    h5: {
+      fontSize: 18,
+      fontWeight: 700,
+    },
+    h6: {
+      fontSize: 16,
+      fontWeight: 600,
     },
     body1: {
       fontSize: 14,
@@ -38,6 +51,9 @@ export const theme = createTheme({
       main: "#4880FF",
       light: "#4880FF",
       dark: "#4880FF",
+    },
+    text: {
+      primary: "#282D32",
     },
   },
   components: {

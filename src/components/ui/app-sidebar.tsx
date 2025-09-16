@@ -1,15 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import {
-  Box,
-  Divider,
-  IconButton,
-  List,
-  ListItem,
-  ListItemText,
-} from "@mui/material";
-import Logo from "../logo/logo";
+import { Box, Divider, List, ListItem, ListItemText } from "@mui/material";
 import { Inventory2 } from "@mui/icons-material";
 import SpeedIcon from "@mui/icons-material/Speed";
 import GridViewIcon from "@mui/icons-material/GridView";
@@ -27,7 +19,7 @@ import PaymentsIcon from "@mui/icons-material/Payments";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import GridOnIcon from "@mui/icons-material/GridOn";
-import MenuIcon from "@mui/icons-material/Menu";
+import Logo from "../logo/logo";
 
 const sidebarNav: SidebarNav = {
   admin: [
@@ -128,7 +120,7 @@ const Sidebar = () => {
     <>
       <Box
         sx={{
-          position: { xs: "fixed", md: "relative" },
+          position: { xs: "fixed", md: "sticky" },
           top: 0,
           left: 0,
           height: "var(--app-height)",
