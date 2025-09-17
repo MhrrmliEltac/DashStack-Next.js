@@ -1,11 +1,8 @@
-import { SvgIconTypeMap } from "@mui/material";
-import { OverridableComponent } from "@mui/material/OverridableComponent";
-
-type MUIIcon = OverridableComponent<SvgIconTypeMap<"svg">>;
+import React from "react";
 
 export interface NavElement {
   navName: string;
-  icon: MUIIcon;
+  icon: React.ElementType;
   href: string;
 }
 
