@@ -1,5 +1,5 @@
 import { Card, CardHeader, Box, Typography } from "@mui/material";
-import ProductCard from "../product-card/ProductCard";
+import FeaturedProductCardItem from "./FeaturedProductCardItem";
 
 const FeaturedProductCard = () => {
   return (
@@ -27,7 +27,7 @@ const FeaturedProductCard = () => {
           </Box>
         }
       />
-      <ProductCard />
+      <FeaturedProductCardItem />
     </Card>
   );
 };

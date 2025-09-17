@@ -1,6 +1,6 @@
 import TitleHeader from "@/components/heading/TitleHeader";
 import DashboardLayout from "@/components/layout/DashboardLayout";
-import { Box, Card, CardContent, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, Typography } from "@mui/material";
 import React from "react";
 import LeftArrowButton from "@/components/ui/app-arrow-left-button";
 import RightArrowButton from "@/components/ui/app-arrow-right-button";
@@ -20,6 +20,9 @@ const ProductPage = () => {
           backgroundPosition: "center",
           backgroundSize: "cover",
           position: "relative",
+          py: {
+            lg: "50px",
+          },
         }}
       >
         {/* Left arrow */}
@@ -30,9 +33,7 @@ const ProductPage = () => {
 
         <CardContent
           sx={{
-            py: {
-              lg: "50px",
-            },
+            p: 0,
             pl: {
               lg: "130px",
             },
@@ -56,6 +57,20 @@ const ProductPage = () => {
             <Typography variant="h6" color="#FFFFFF" lineHeight="30px">
               Designer Dresses - Pick from trendy Designer Dress.
             </Typography>
+            <Button
+              sx={{
+                maxWidth: "156px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundColor: "#FF8743",
+                borderRadius: "11px",
+              }}
+            >
+              <Typography variant="button" color="#FFFFFF">
+                Get Started
+              </Typography>
+            </Button>
           </Box>
         </CardContent>
       </Card>

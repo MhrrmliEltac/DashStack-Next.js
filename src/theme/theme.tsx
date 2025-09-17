@@ -40,6 +40,12 @@ export const theme = createTheme({
       fontWeight: 600,
       letterSpacing: "0px",
     },
+    button: {
+      color: "#FFFFFF",
+      fontSize: 14,
+      fontWeight: 700,
+      textTransform: "none",
+    },
   },
   palette: {
     primary: {
