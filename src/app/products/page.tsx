@@ -1,9 +1,7 @@
 import TitleHeader from "@/components/heading/TitleHeader";
 import DashboardLayout from "@/components/layout/DashboardLayout";
-import { Box, Card, CardContent, IconButton, Typography } from "@mui/material";
+import { Box, Card, CardContent, Typography } from "@mui/material";
 import React from "react";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import LeftArrowButton from "@/components/ui/app-arrow-left-button";
 import RightArrowButton from "@/components/ui/app-arrow-right-button";
 

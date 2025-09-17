@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Typography, IconButton, Stack, CardMedia } from "@mui/material";
+import { Box, Typography,  Stack, CardMedia } from "@mui/material";
 import { useCallback, useState } from "react";
 import LeftArrowButton from "../ui/app-arrow-left-button";
 import RightArrowButton from "../ui/app-arrow-right-button";
