@@ -9,6 +9,7 @@ export type OpenType = {
 interface SidebarState {
   open: OpenType;
   handleOpen: (device: DeviceType) => void;
+  closeMobileSidebar: () => void;
 }
 
 export const useSidebar = create<SidebarState>()((set) => ({
@@ -37,4 +38,8 @@ export const useSidebar = create<SidebarState>()((set) => ({
           return state;
       }
     }),
+  closeMobileSidebar: () =>
+    set((state) => ({
+      open: { ...state.open, mobileOpen: false },
+    })),
 }));

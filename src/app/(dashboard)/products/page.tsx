@@ -11,7 +11,6 @@ const ProductPage = () => {
       {/* Banner slider */}
       <Slider />
 
-      {/*  */}
     </DashboardLayout>
   );
 };

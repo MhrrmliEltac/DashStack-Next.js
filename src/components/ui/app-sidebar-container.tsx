@@ -1,5 +1,6 @@
-import { OpenType } from "@/store/useSidebar";
-import { Box } from "@mui/material";
+"use client"
+import { Drawer, Box } from "@mui/material";
+import { OpenType, useSidebar } from "@/store/useSidebar";
 import React from "react";
 
 interface SidebarContainerProps {
@@ -7,46 +8,55 @@ interface SidebarContainerProps {
   children: React.ReactNode;
 }
 
-const SidebarContainer: React.FC<SidebarContainerProps> = ({
-  children,
-  isOpen,
-}) => {
+const SidebarContainer: React.FC<SidebarContainerProps> = ({ children, isOpen }) => {
+
+  const closeMobileSidebar = useSidebar((state) => state.closeMobileSidebar)
+
   return (
-    <Box
-      sx={{
-        position: "sticky",
-        top: 0,
-        left: 0,
-        height: "var(--app-height)",
-        width: {
-          xs: isOpen.mobileOpen ? "240px" : "0px",
-          md: isOpen.desktopOpen ? "240px" : "0px",
-        },
-        minWidth: {
-          xs: isOpen.mobileOpen ? "240px" : "0px",
-          md: isOpen.desktopOpen ? "240px" : "0px",
-        },
-        maxWidth: {
-          xs: isOpen.mobileOpen ? "240px" : "0px",
-          md: isOpen.desktopOpen ? "240px" : "0px",
-        },
-        background: "#FFFFFF",
-        zIndex: 1200,
-        transition: "all 0.1s ease",
-        overflowY: "scroll",
-        overflowX: "hidden",
-        visibility: {
-          xs: isOpen.mobileOpen ? "visible" : "hidden",
-          md: isOpen.desktopOpen ? "visible" : "hidden",
-        },
-        transform: {
-          xs: isOpen.mobileOpen ? "translateX(0)" : "translateX(-100%)",
-          md: isOpen.desktopOpen ? "translateX(0)" : "translateX(-100%)",
-        },
-      }}
-    >
-      {children}
-    </Box>
+    <>
+      {/* Mobile Drawer */}
+      <Drawer
+        anchor="left"
+        open={isOpen.mobileOpen}
+        variant="temporary"
+        onClose={closeMobileSidebar}
+        ModalProps={{
+          keepMounted: true,
+        }}
+        sx={{
+          display: { xs: "block", md: "none" },
+          "& .MuiDrawer-paper": {
+            width: 240,
+            boxSizing: "border-box",
+          },
+        }}
+      >
+        {children}
+      </Drawer>
+
+      {/* Desktop Sidebar */}
+      <Box
+        sx={{
+          display: { xs: "none", md: "block" },
+          position: "sticky",
+          top: 0,
+          left: 0,
+          height: "var(--app-height)",
+          width: isOpen.desktopOpen ? "240px" : "0px",
+          minWidth: isOpen.desktopOpen ? "240px" : "0px",
+          maxWidth: isOpen.desktopOpen ? "240px" : "0px",
+          background: "#FFFFFF",
+          zIndex: 1200,
+          transition: "all 0.1s ease",
+          overflowY: "scroll",
+          overflowX: "hidden",
+          visibility: isOpen.desktopOpen ? "visible" : "hidden",
+          transform: isOpen.desktopOpen ? "translateX(0)" : "translateX(-100%)",
+        }}
+      >
+        {children}
+      </Box>
+    </>
   );
 };
 

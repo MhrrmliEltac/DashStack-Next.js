@@ -1,5 +1,7 @@
+import { Card } from "@mui/material"
+
 const ProductCard = () => {
-  return <div>ProductCard</div>;
+  return <Card></Card>;
 };
 
 export default ProductCard;
