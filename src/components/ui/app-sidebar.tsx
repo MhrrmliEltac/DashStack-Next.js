@@ -13,7 +13,7 @@ import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import ContentPasteIcon from "@mui/icons-material/ContentPaste";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
-import { NavElement, SidebarNav } from "@/types/types";
+import { NavElement, SidebarNav } from "@/lib/types/types";
 import SidebarItem from "./app-sidebar-item";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import BarChartIcon from "@mui/icons-material/BarChart";

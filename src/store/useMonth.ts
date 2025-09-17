@@ -1,4 +1,4 @@
-import { MonthKey } from "@/_mock/monthlyData";
+import { MonthKey } from "@/lib/_mock/monthlyData";
 import { create } from "zustand";
 
 interface MonthState {

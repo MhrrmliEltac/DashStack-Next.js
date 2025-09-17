@@ -1,6 +1,6 @@
 "use client";
 
-import { MonthKey, monthlyData } from "@/_mock/monthlyData";
+import { MonthKey, monthlyData } from "@/lib/_mock/monthlyData";
 import { useMonth } from "@/store/useMonth";
 import { LineChart } from "@mui/x-charts";
 import React from "react";

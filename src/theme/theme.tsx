@@ -110,7 +110,7 @@ export const theme = createTheme({
           paddingRight: "30px !important",
           paddingTop: "30px !important",
           [`@media (min-width:1200px)`]: {
-            maxWidth: "1835px",
+            maxWidth: "1635px",
           },
         },
       },

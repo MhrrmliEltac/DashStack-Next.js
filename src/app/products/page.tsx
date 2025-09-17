@@ -1,79 +1,17 @@
 import TitleHeader from "@/components/heading/TitleHeader";
 import DashboardLayout from "@/components/layout/DashboardLayout";
-import { Box, Button, Card, CardContent, Typography } from "@mui/material";
+import Slider from "@/components/products-page/Slider";
 import React from "react";
-import LeftArrowButton from "@/components/ui/app-arrow-left-button";
-import RightArrowButton from "@/components/ui/app-arrow-right-button";
 
 const ProductPage = () => {
   return (
     <DashboardLayout key="product">
       <TitleHeader title="Products" />
 
-      <Card
-        sx={{
-          height: "346px",
-          width: "100%",
-          backgroundColor: "#4880FF",
-          backgroundImage: "url(/product-banner-pattern.svg)",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          position: "relative",
-          py: {
-            lg: "50px",
-          },
-        }}
-      >
-        {/* Left arrow */}
-        <LeftArrowButton />
+      {/* Banner slider */}
+      <Slider />
 
-        {/* Right arrow */}
-        <RightArrowButton />
-
-        <CardContent
-          sx={{
-            p: 0,
-            pl: {
-              lg: "130px",
-            },
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "start",
-          }}
-        >
-          <Box sx={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-            <Typography variant="h6" color="#FFFFFF" lineHeight="30px">
-              September 12-22
-            </Typography>
-            <Typography
-              fontSize="37px"
-              fontWeight={900}
-              color="#FFFFFF"
-              lineHeight="48px"
-            >
-              Enjoy free home <br /> delivery in this summer
-            </Typography>
-            <Typography variant="h6" color="#FFFFFF" lineHeight="30px">
-              Designer Dresses - Pick from trendy Designer Dress.
-            </Typography>
-            <Button
-              sx={{
-                maxWidth: "156px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                backgroundColor: "#FF8743",
-                borderRadius: "11px",
-              }}
-            >
-              <Typography variant="button" color="#FFFFFF">
-                Get Started
-              </Typography>
-            </Button>
-          </Box>
-        </CardContent>
-      </Card>
+      {/*  */}
     </DashboardLayout>
   );
 };

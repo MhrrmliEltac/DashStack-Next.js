@@ -1,6 +1,6 @@
 "use client";
 
-import { salesAnalyticsData } from "@/_mock/salesAnalyticsData";
+import { salesAnalyticsData } from "@/lib/_mock/salesAnalyticsData";
 import { LineChart } from "@mui/x-charts";
 
 const SalesAnalytics = () => {

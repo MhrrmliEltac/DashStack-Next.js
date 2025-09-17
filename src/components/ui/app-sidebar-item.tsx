@@ -2,7 +2,7 @@ import { ListItem, Typography } from "@mui/material";
 import React from "react";
 import Line from "./app-line";
 import RouterLink from "./app-router-link";
-import { NavElement } from "@/types/types";
+import { NavElement } from "@/lib/types/types";
 
 interface SidebarItemProps {
   navItem: NavElement;

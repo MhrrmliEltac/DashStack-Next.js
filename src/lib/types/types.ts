@@ -11,3 +11,10 @@ export interface SidebarNav {
   pages: NavElement[];
   preferences: NavElement[];
 }
+
+export interface CampaignBanner {
+  id: string;
+  title: string;
+  subtitle?: string;
+  description: string;
+}
