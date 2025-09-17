@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Box, Divider, List, ListItem, ListItemText } from "@mui/material";
+import { useEffect } from "react";
+import { Divider, List, ListItem, ListItemText } from "@mui/material";
 import { Inventory2 } from "@mui/icons-material";
 import SpeedIcon from "@mui/icons-material/Speed";
 import GridViewIcon from "@mui/icons-material/GridView";
@@ -20,6 +20,10 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import GridOnIcon from "@mui/icons-material/GridOn";
 import Logo from "../logo/logo";
+import { useSidebar } from "@/store/useSidebar";
+import SidebarContainer from "./app-sidebar-container";
+import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
+import SettingsIcon from "@mui/icons-material/Settings";
 
 const sidebarNav: SidebarNav = {
   admin: [
@@ -96,11 +100,23 @@ const sidebarNav: SidebarNav = {
       href: "/table",
     },
   ],
+  preferences: [
+    {
+      navName: "Settings",
+      icon: SettingsIcon,
+      href: "/settings",
+    },
+    {
+      navName: "Logout",
+      icon: PowerSettingsNewIcon,
+      href: "/log-out",
+    },
+  ],
 };
 
 const Sidebar = () => {
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
+  const isOpen = useSidebar((state) => state.open);
 
   useEffect(() => {
     const updateHeight = () => {
@@ -117,61 +133,55 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <>
-      <Box
-        sx={{
-          position: { xs: "fixed", md: "sticky" },
-          top: 0,
-          left: 0,
-          height: "var(--app-height)",
-          minWidth: "240px",
-          maxWidth: "240px",
-          background: "#FFFFFF",
-          borderRight: "1px solid #E8E8E8",
-          zIndex: 1200,
-          transition: "transform 0.3s ease-in-out",
-          transform: {
-            xs: isOpen ? "translateX(0)" : "translateX(-100%)",
-            md: "translateX(0)",
-          },
-          overflowY: "scroll",
-        }}
-      >
-        {/* Admin nav */}
-        <List>
-          <ListItem sx={{ paddingTop: "24px", paddingBottom: "30px" }}>
-            <Logo />
-          </ListItem>
-          {sidebarNav.admin.map((navItem: NavElement) => (
-            <SidebarItem
-              key={navItem.navName}
-              navItem={navItem}
-              pathname={pathname}
-            />
-          ))}
-        </List>
+    <SidebarContainer isOpen={isOpen}>
+      {/* Admin nav */}
+      <List>
+        <ListItem sx={{ paddingTop: "24px", paddingBottom: "30px" }}>
+          <Logo />
+        </ListItem>
+        {sidebarNav.admin.map((navItem: NavElement) => (
+          <SidebarItem
+            key={navItem.navName}
+            navItem={navItem}
+            pathname={pathname}
+          />
+        ))}
+      </List>
 
-        {/* Line */}
-        <Divider sx={{ width: "100%", height: "1px", background: "#E0E0E0" }} />
+      {/* Line */}
+      <Divider sx={{ width: "100%", height: "1px", background: "#E0E0E0" }} />
 
-        {/* Pages nav */}
-        <List>
-          <ListItem sx={{ pl: "35px", py: "16px" }}>
-            <ListItemText
-              sx={{ opacity: "60%", textTransform: "uppercase" }}
-              primary="Pages"
-            />
-          </ListItem>
-          {sidebarNav.pages.map((navItem: NavElement) => (
-            <SidebarItem
-              key={navItem.navName}
-              navItem={navItem}
-              pathname={pathname}
-            />
-          ))}
-        </List>
-      </Box>
-    </>
+      {/* Pages nav */}
+      <List>
+        <ListItem sx={{ pl: "35px", py: "16px" }}>
+          <ListItemText
+            sx={{ opacity: "60%", textTransform: "uppercase" }}
+            primary="Pages"
+          />
+        </ListItem>
+        {sidebarNav.pages.map((navItem: NavElement) => (
+          <SidebarItem
+            key={navItem.navName}
+            navItem={navItem}
+            pathname={pathname}
+          />
+        ))}
+      </List>
+
+      {/* Line */}
+      <Divider sx={{ width: "100%", height: "1px", background: "#E0E0E0" }} />
+
+      {/* Preferences nav */}
+      <List>
+        {sidebarNav.preferences.map((navItem: NavElement) => (
+          <SidebarItem
+            key={navItem.navName}
+            navItem={navItem}
+            pathname={pathname}
+          />
+        ))}
+      </List>
+    </SidebarContainer>
   );
 };
 

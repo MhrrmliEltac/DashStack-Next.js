@@ -12,4 +12,5 @@ export interface NavElement {
 export interface SidebarNav {
   admin: NavElement[];
   pages: NavElement[];
+  preferences: NavElement[];
 }

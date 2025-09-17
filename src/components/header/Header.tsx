@@ -1,10 +1,34 @@
-import { Avatar, Box, IconButton, TextField, Typography } from "@mui/material";
+"use client";
+
+import {
+  Avatar,
+  Box,
+  IconButton,
+  TextField,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import AppBadge from "../ui/app-badge";
+import { useSidebar } from "@/store/useSidebar";
 
 const Header = () => {
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
+
+  const handleOpen = useSidebar((state) => state.handleOpen);
+
+  const handleMediaQueryOpen = () => {
+    if (isDesktop) {
+      handleOpen("desktop");
+    } else {
+      handleOpen("mobile");
+    }
+  };
+
   return (
     <header className="w-full px-[31px] py-[16px] bg-white h-[70px]">
       <nav className="flex justify-between w-full">
@@ -17,7 +41,12 @@ const Header = () => {
             alignItems: "center",
           }}
         >
-          <IconButton disableFocusRipple disableRipple disableTouchRipple>
+          <IconButton
+            disableFocusRipple
+            disableRipple
+            disableTouchRipple
+            onClick={handleMediaQueryOpen}
+          >
             <MenuIcon />
           </IconButton>
           <TextField

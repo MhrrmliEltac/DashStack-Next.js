@@ -1,139 +1,33 @@
+import CustomerCard from "@/components/dashboard/CustomerCard";
+import FeaturedProductCard from "@/components/dashboard/FeaturedProductCard";
+import RevenueCard from "@/components/dashboard/RevenueCard";
+import SalesAnalyticsCard from "@/components/dashboard/SalesAnalyticsCard";
 import TitleHeader from "@/components/heading/TitleHeader";
 import DashboardLayout from "@/components/layout/DashboardLayout";
-import ProductCard from "@/components/product-card/ProductCard";
-import SalesAnalytics from "@/components/sales-analytics-chart/SalesAnalytics";
-import CustomersDonut from "@/components/ui/app-customer-donut-chart";
-import AppLineChart from "@/components/ui/app-line-chart";
-import CustomSelect from "@/components/ui/app-select";
-import { Box, Card, CardHeader, Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 
 const DashboardPage = () => {
   return (
     <DashboardLayout>
       <TitleHeader title="Dashboard" key={"dashboard"} />
-      <Card sx={{ mb: "30px" }}>
-        <CardHeader
-          title={
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <Typography variant="h3" color="primary">
-                Revenue
-              </Typography>
-              <CustomSelect />
-            </Box>
-          }
-        />
-        <AppLineChart />
-      </Card>
+      <RevenueCard />
 
       <Grid
         container
         spacing={{
           xs: 5,
-          md: 10,
-          lg: 15,
-          xl: 35,
+          md: 3,
+          lg: 10,
         }}
       >
-        <Grid size={{ xs: 12, md: 6, lg: 4 }}>
-          <Card
-            sx={{
-              maxWidth: {
-                xs: "100%",
-                md: "360px",
-              },
-              width: "100%",
-              maxHeight: "365px",
-              p: "24px !important",
-            }}
-          >
-            <CardHeader
-              sx={{ p: 0 }}
-              title={
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
-                >
-                  <Typography variant="h3" color="primary">
-                    Customers
-                  </Typography>
-                </Box>
-              }
-            />
-            <CustomersDonut />
-          </Card>
+        <Grid size={{ xs: 12, md: 4 }}>
+          <CustomerCard />
         </Grid>
-        <Grid size={{ xs: 12, md: 6, lg: 4 }}>
-          <Card
-            sx={{
-              maxWidth: {
-                xs: "100%",
-                md: "360px",
-              },
-              width: "100%",
-              maxHeight: "365px",
-              p: "24px !important",
-            }}
-          >
-            <CardHeader
-              sx={{ p: 0 }}
-              title={
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
-                >
-                  <Typography variant="h3" color="primary">
-                    Featured Product
-                  </Typography>
-                </Box>
-              }
-            />
-            <ProductCard />
-          </Card>
+        <Grid size={{ xs: 12, md: 4 }}>
+          <FeaturedProductCard />
         </Grid>
-        <Grid size={{ xs: 12, md: 6, lg: 4 }}>
-          <Card
-            sx={{
-              maxWidth: {
-                xs: "100%",
-                md: "360px",
-              },
-              width: "100%",
-              maxHeight: "365px",
-              p: "24px !important",
-            }}
-          >
-            <CardHeader
-              sx={{ p: 0 }}
-              title={
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
-                >
-                  <Typography variant="h3" color="primary">
-                    Sales Analytics
-                  </Typography>
-                </Box>
-              }
-            />
-            <Box sx={{ width: "100%" }}>
-              <SalesAnalytics />
-            </Box>
-          </Card>
+        <Grid size={{ xs: 12, md: 4 }}>
+          <SalesAnalyticsCard />
         </Grid>
       </Grid>
     </DashboardLayout>

@@ -1,16 +1,9 @@
 "use client";
 
-import {
-  Box,
-  Typography,
-  IconButton,
-  Stack,
-  Card,
-  CardMedia,
-} from "@mui/material";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { Box, Typography, IconButton, Stack, CardMedia } from "@mui/material";
 import { useCallback, useState } from "react";
+import LeftArrowButton from "../ui/app-arrow-left-button";
+import RightArrowButton from "../ui/app-arrow-right-button";
 
 const images = [
   "https://static.vecteezy.com/system/resources/thumbnails/050/177/034/small_2x/smart-watch-isolated-on-transparent-background-png.png",
@@ -21,6 +14,7 @@ export default function ProductCard() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   const handleIncrementIndex = useCallback(() => {
+    if (currentIndex === 1) return;
     setCurrentIndex((prev) => prev + 1);
   }, [currentIndex]);
 
@@ -43,38 +37,10 @@ export default function ProductCard() {
       }}
     >
       {/* Left arrow */}
-      <IconButton
-        sx={{
-          position: "absolute",
-          left: 8,
-          top: "50%",
-          transform: "translateY(-50%)",
-          backgroundColor: "#f4f4f4",
-          "&:hover": {
-            backgroundColor: "#e0e0e0",
-          },
-        }}
-        onClick={handleDecrementIndex}
-      >
-        <ArrowBackIosNewIcon fontSize="small" />
-      </IconButton>
+      <LeftArrowButton onClick={handleDecrementIndex} />
 
       {/* Right arrow */}
-      <IconButton
-        sx={{
-          position: "absolute",
-          right: 8,
-          top: "50%",
-          transform: "translateY(-50%)",
-          backgroundColor: "#f4f4f4",
-          "&:hover": {
-            backgroundColor: "#e0e0e0",
-          },
-        }}
-        onClick={handleIncrementIndex}
-      >
-        <ArrowForwardIosIcon fontSize="small" />
-      </IconButton>
+      <RightArrowButton onClick={handleIncrementIndex} />
 
       {/* Image */}
       <CardMedia
