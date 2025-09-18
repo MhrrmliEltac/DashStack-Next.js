@@ -1,3 +1,4 @@
+"use client";
 import {
   Box,
   Button,
@@ -11,8 +12,9 @@ import {
 import LeftArrowButton from "../ui/app-arrow-left-button";
 import RightArrowButton from "../ui/app-arrow-right-button";
 import { ProductCardProps } from "@/lib/types/types";
-import { FavoriteBorderOutlined } from "@mui/icons-material";
+import { Favorite, FavoriteBorderOutlined } from "@mui/icons-material";
 import { formatPrice } from "@/lib/helpers/formatPrice";
+import { useState } from "react";
 
 const ProductCard = ({
   price,
@@ -21,6 +23,12 @@ const ProductCard = ({
   ratingCount,
   image,
 }: ProductCardProps) => {
+  const [clickedFavorite, setClickedFavorite] = useState<boolean>(false);
+
+  const handleFavorite = () => {
+    setClickedFavorite((prev: boolean) => !prev);
+  };
+
   return (
     <Card sx={{ width: "100%", maxWidth: "100%" }}>
       <Box
@@ -92,6 +100,7 @@ const ProductCard = ({
             </Stack>
           </Stack>
           <IconButton
+            onClick={handleFavorite}
             sx={{
               width: "44px",
               height: "44px",
@@ -101,7 +110,11 @@ const ProductCard = ({
               borderRadius: "50%",
             }}
           >
-            <FavoriteBorderOutlined fontSize="medium" htmlColor="#000" />
+            {clickedFavorite ? (
+              <Favorite fontSize="medium" htmlColor="#F93C65" />
+            ) : (
+              <FavoriteBorderOutlined fontSize="medium" htmlColor="#000" />
+            )}
           </IconButton>
         </Stack>
 
