@@ -18,3 +18,12 @@ export interface CampaignBanner {
   subtitle?: string;
   description: string;
 }
+
+export interface ProductCardProps {
+  id: string;
+  productName: string;
+  price: number;
+  rating: number;
+  ratingCount: number;
+  image: string;
+}

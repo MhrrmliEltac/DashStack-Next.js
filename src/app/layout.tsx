@@ -1,14 +1,9 @@
 import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
 import "./globals.css";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
-import { ThemeProvider } from "@mui/material";
-import { theme } from "@/theme/theme";
-import Sidebar from "@/components/ui/app-sidebar";
-
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import Container from "@/components/ui/app-container";
+import AppLayout from "@/components/layout/AppLayout";
 config.autoAddCss = false;
 
 const nunitoSans = Nunito_Sans({
@@ -29,12 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${nunitoSans.variable} antialiased flex relative`}>
-        <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>
-            <Sidebar />
-            <Container>{children}</Container>
-          </ThemeProvider>
-        </AppRouterCacheProvider>
+        <AppLayout>{children}</AppLayout>
       </body>
     </html>
   );

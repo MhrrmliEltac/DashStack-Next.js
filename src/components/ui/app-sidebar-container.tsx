@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Drawer, Box } from "@mui/material";
 import { OpenType, useSidebar } from "@/store/useSidebar";
 import React from "react";
@@ -8,9 +8,11 @@ interface SidebarContainerProps {
   children: React.ReactNode;
 }
 
-const SidebarContainer: React.FC<SidebarContainerProps> = ({ children, isOpen }) => {
-
-  const closeMobileSidebar = useSidebar((state) => state.closeMobileSidebar)
+const SidebarContainer: React.FC<SidebarContainerProps> = ({
+  children,
+  isOpen,
+}) => {
+  const closeMobileSidebar = useSidebar((state) => state.closeMobileSidebar);
 
   return (
     <>
@@ -24,7 +26,7 @@ const SidebarContainer: React.FC<SidebarContainerProps> = ({ children, isOpen })
           keepMounted: true,
         }}
         sx={{
-          display: { xs: "block", md: "none" },
+          display: { xs: "block", lg: "none" },
           "& .MuiDrawer-paper": {
             width: 240,
             boxSizing: "border-box",
@@ -37,7 +39,7 @@ const SidebarContainer: React.FC<SidebarContainerProps> = ({ children, isOpen })
       {/* Desktop Sidebar */}
       <Box
         sx={{
-          display: { xs: "none", md: "block" },
+          display: { xs: "none", lg: "block" },
           position: "sticky",
           top: 0,
           left: 0,

@@ -17,7 +17,7 @@ import { useSidebar } from "@/store/useSidebar";
 
 const Header = () => {
   const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
+  const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
 
   const handleOpen = useSidebar((state) => state.handleOpen);
 

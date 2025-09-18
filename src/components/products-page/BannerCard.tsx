@@ -59,7 +59,7 @@ const BannerCard: React.FC<BannerCardProps> = ({
             {subtitle}
           </Typography>
           <Typography
-            fontSize="37px"
+            fontSize={{ xs: "24px", md: "37px" }}
             fontWeight={900}
             color="#FFFFFF"
             lineHeight="48px"
