@@ -6,7 +6,7 @@ import CustomOrderButton from "./CustomOrderButton";
 import { useAnchor } from "../hooks/useAnchor";
 
 const OrderType = () => {
-  const { open, anchorEl, handleOpen, handleClose } = useAnchor();
+  const { open, handleOpen } = useAnchor();
 
   return (
     <CustomOrderStack>

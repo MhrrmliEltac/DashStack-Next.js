@@ -27,3 +27,11 @@ export interface ProductCardProps {
   ratingCount: number;
   image: string;
 }
+
+export enum Status {
+  Completed = "Completed",
+  Processing = "Processing",
+  Rejected = "Rejected",
+  OnHold = "On Hold",
+  InTransit = "In Transit",
+}

@@ -2,6 +2,7 @@ import { KeyboardArrowDown } from "@mui/icons-material";
 import { Button, Typography } from "@mui/material";
 import { Dayjs } from "dayjs";
 import React from "react";
+import ReplayIcon from "@mui/icons-material/Replay";
 
 interface CustomButtonProps {
   onOpen?: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -26,6 +27,7 @@ const CustomOrderButton: React.FC<CustomButtonProps> = ({
 }) => {
   return (
     <Button
+      variant="text"
       onClick={onOpen}
       disableTouchRipple
       sx={{
@@ -45,7 +47,7 @@ const CustomOrderButton: React.FC<CustomButtonProps> = ({
         />
       }
       startIcon={
-        <KeyboardArrowDown
+        <ReplayIcon
           sx={{
             display: startIcon ? "block" : "none",
             transform: open ? "rotate(180deg)" : "rotate(0deg)",

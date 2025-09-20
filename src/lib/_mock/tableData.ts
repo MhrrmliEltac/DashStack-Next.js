@@ -1,0 +1,93 @@
+import { Status } from "../types/types";
+
+export const TABLE_HEAD: string[] = [
+  "id",
+  "name",
+  "address",
+  "date",
+  "type",
+  "status",
+];
+
+export const TABLE_BODY = [
+  {
+    id: "00001",
+    name: "Christine Brooks",
+    address: "089 Kutch Green Apt. 448",
+    date: "04 Sep 2019",
+    type: "Electric",
+    status: Status.Completed,
+  },
+  {
+    id: "00002",
+    name: "Samuel Peterson",
+    address: "113 Maple Street, New York",
+    date: "15 Mar 2021",
+    type: "Water",
+    status: Status.Processing,
+  },
+  {
+    id: "00003",
+    name: "Jessica Miller",
+    address: "908 Willow Ave, Los Angeles",
+    date: "22 Jan 2020",
+    type: "Gas",
+    status: Status.Rejected,
+  },
+  {
+    id: "00004",
+    name: "Michael Smith",
+    address: "71 Sunset Blvd, Miami",
+    date: "30 Nov 2022",
+    type: "Internet",
+    status: Status.Completed,
+  },
+  {
+    id: "00005",
+    name: "Emily Johnson",
+    address: "245 Lakewood Dr, Seattle",
+    date: "05 Jul 2023",
+    type: "Electric",
+    status: Status.Processing,
+  },
+  {
+    id: "00006",
+    name: "David Anderson",
+    address: "14 Pine Lane, Denver",
+    date: "19 May 2021",
+    type: "Water",
+    status: Status.Completed,
+  },
+  {
+    id: "00007",
+    name: "Sophia Turner",
+    address: "301 Ocean Dr, San Diego",
+    date: "09 Sep 2023",
+    type: "Internet",
+    status: Status.Processing,
+  },
+  {
+    id: "00008",
+    name: "Daniel Walker",
+    address: "77 Hilltop Rd, Chicago",
+    date: "12 Dec 2020",
+    type: "Gas",
+    status: Status.OnHold,
+  },
+  {
+    id: "00009",
+    name: "Olivia Harris",
+    address: "34 Greenway Blvd, Austin",
+    date: "17 Feb 2022",
+    type: "Electric",
+    status: Status.InTransit,
+  },
+  {
+    id: "00010",
+    name: "James Martin",
+    address: "410 Birch St, Boston",
+    date: "08 Aug 2023",
+    type: "Water",
+    status: Status.Processing,
+  },
+];
