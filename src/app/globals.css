@@ -38,3 +38,7 @@ body {
     transform: translateY(0);
   }
 }
+
+.bg-blue {
+  background-color: #4880ff !important;
+}

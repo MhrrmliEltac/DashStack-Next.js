@@ -18,10 +18,7 @@ const Slider = () => {
       {campaignBanners &&
         campaignBanners.length > 0 &&
         campaignBanners.map((campaignBanner: CampaignBanner) => (
-          <SwiperSlide
-            key={campaignBanner.id}
-
-          >
+          <SwiperSlide key={campaignBanner.id}>
             <BannerCard
               id={campaignBanner.id}
               title={campaignBanner.title}

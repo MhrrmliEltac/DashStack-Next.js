@@ -35,3 +35,12 @@ export enum Status {
   OnHold = "On Hold",
   InTransit = "In Transit",
 }
+
+export interface OrdersType {
+  id: string;
+  name: string;
+  address: string;
+  date: string;
+  type: string;
+  status: Status;
+}

@@ -1,6 +1,6 @@
 "use client";
 import { TABLE_HEAD, TABLE_BODY } from "@/lib/_mock/tableData";
-import { Status } from "@/lib/types/types";
+import { OrdersType, Status } from "@/lib/types/types";
 import {
   TableContainer,
   Paper,
@@ -13,8 +13,11 @@ import {
 } from "@mui/material";
 import React from "react";
 import CustomOrderStatusButton from "./CustomOrderStatusButton";
+import { useFilter } from "@/store/useFilter";
 
 const OrderListTable = () => {
+  const filterState = useFilter();
+
   const renderStatusButton = (status: Status) => {
     return <CustomOrderStatusButton status={status} />;
   };
@@ -34,7 +37,7 @@ const OrderListTable = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {TABLE_BODY.map((body, index) => (
+          {filterState.orders.map((body: OrdersType, index: number) => (
             <TableRow
               key={body.id}
               sx={{
