@@ -76,6 +76,11 @@ export const theme = createTheme({
         containedInfo: {
           backgroundColor: "#FFFFFF",
         },
+        root: {
+          "&:hover": {
+            backgroundColor: "transparent",
+          },
+        },
       },
     },
     MuiTextField: {

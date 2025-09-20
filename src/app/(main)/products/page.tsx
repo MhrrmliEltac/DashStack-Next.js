@@ -1,19 +1,24 @@
 import TitleHeader from "@/components/heading/TitleHeader";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import ProductCard from "@/components/product-card/ProductCard";
+import Slider from "@/components/products-page/Slider";
 import { products } from "@/lib/_mock/products";
 import { ProductCardProps } from "@/lib/types/types";
 import { Grid } from "@mui/material";
 import React from "react";
 
-const FavoritePage = () => {
+const ProductPage = () => {
   return (
     <DashboardLayout>
-      <TitleHeader title="Favorites" />
+      <TitleHeader title="Products" />
 
-      <Grid container spacing={3}> 
+      {/* Banner slider */}
+      <Slider />
+
+      {/* Products */}
+      <Grid container spacing={10} mt="30px">
         {products &&
-          products.map((product: ProductCardProps) => (
+          products.slice(3, 6).map((product: ProductCardProps) => (
             <Grid key={product.id} size={{ xs: 12, md: 4 }}>
               <ProductCard
                 id={product.id}
@@ -22,7 +27,7 @@ const FavoritePage = () => {
                 productName={product.productName}
                 rating={product.rating}
                 ratingCount={product.ratingCount}
-              />{" "}
+              />
             </Grid>
           ))}
       </Grid>
@@ -30,4 +35,4 @@ const FavoritePage = () => {
   );
 };
 
-export default FavoritePage;
+export default ProductPage;
