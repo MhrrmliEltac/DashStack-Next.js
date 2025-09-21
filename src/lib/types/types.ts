@@ -26,6 +26,9 @@ export interface ProductCardProps {
   rating: number;
   ratingCount: number;
   image: string;
+  category?: string;
+  piece?: number;
+  availableColor?: string[];
 }
 
 export enum Status {

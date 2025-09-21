@@ -16,13 +16,13 @@ const SalesAnalytics = () => {
           data: productAData,
           label: "Product A",
           color: "#1976d2",
-          showMark: true,
+          showMark: false,
         },
         {
           data: productBData,
           label: "Product B",
           color: "#2e7d32",
-          showMark: true,
+          showMark: false,
         },
       ]}
       height={300}

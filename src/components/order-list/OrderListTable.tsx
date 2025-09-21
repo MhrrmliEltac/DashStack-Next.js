@@ -1,5 +1,5 @@
 "use client";
-import { TABLE_HEAD, TABLE_BODY } from "@/lib/_mock/tableData";
+import { TABLE_HEAD } from "@/lib/_mock/tableData";
 import { OrdersType, Status } from "@/lib/types/types";
 import {
   TableContainer,
@@ -43,7 +43,7 @@ const OrderListTable = () => {
               sx={{
                 opacity: 0,
                 animation: `fadeIn 0.4s ease forwards`,
-                animationDelay: `${index * 0.1}s`,
+                animationDelay: `${index * 0.06}s`,
                 transition: "background-color 0.3s ease",
                 "&:hover": {
                   backgroundColor: "rgba(0, 0, 0, 0.04)",

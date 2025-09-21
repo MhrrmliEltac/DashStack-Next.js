@@ -21,12 +21,14 @@ const AppLineChart = () => {
           label: "Sales",
           color: "rgba(255, 143, 109, 1)",
           area: true,
+          showMark: false,
         },
         {
           data: profitData,
           label: "Profit",
           color: "rgba(219, 165, 255, 0.7)",
           area: true,
+          showMark: false,
         },
       ]}
       height={300}
