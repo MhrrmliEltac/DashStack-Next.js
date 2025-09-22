@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import CustomOrderStack from "./CustomOrderStack";
 import CustomOrderButton from "./CustomOrderButton";
 import { useAnchor } from "../hooks/useAnchor";
-import { OrdersType, Status } from "@/lib/types/types";
+import { Status } from "@/lib/types/types";
 import TypeStatusPopover from "./TypeStatusPopover";
 import { useFilter } from "@/store/useFilter";
 

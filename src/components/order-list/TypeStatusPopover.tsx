@@ -5,7 +5,6 @@ import {
   Box,
   Typography,
   Button,
-  Divider,
 } from "@mui/material";
 import React from "react";
 import Line from "../ui/app-line";

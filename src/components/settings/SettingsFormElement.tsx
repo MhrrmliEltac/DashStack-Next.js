@@ -19,6 +19,7 @@ const SettingsFormElement = ({ fields }: { fields: FieldsType[] }) => {
   });
 
   const onSubmit: SubmitHandler<SettingsType> = (data) => {
+    console.log(data);
     toast.success("Settings updated successfully!");
     control._reset();
   };

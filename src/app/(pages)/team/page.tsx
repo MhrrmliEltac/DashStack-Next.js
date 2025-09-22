@@ -3,7 +3,7 @@ import DashboardLayout from "@/components/layout/DashboardLayout";
 import TeamMemberCard from "@/components/team/TeamMemberCard";
 import { teamMember } from "@/lib/_mock/teamMember";
 import { MemberType } from "@/lib/types/types";
-import { Avatar, Box, Card, Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import React from "react";
 
 const TeamPage = () => {

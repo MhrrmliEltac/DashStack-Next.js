@@ -3,7 +3,6 @@ import DashboardLayout from "@/components/layout/DashboardLayout";
 import OrderListTable from "@/components/order-list/OrderListTable";
 import StockTableList from "@/components/product-stock/StockTableList";
 import Line from "@/components/ui/app-line";
-import { Divider } from "@mui/material";
 import React from "react";
 
 const TablePage = () => {
