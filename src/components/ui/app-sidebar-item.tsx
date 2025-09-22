@@ -1,8 +1,8 @@
 import { ListItem, Typography } from "@mui/material";
 import React from "react";
-import Line from "./app-line";
 import RouterLink from "./app-router-link";
 import { NavElement } from "@/lib/types/types";
+import SidebarLine from "./app-sidebar-line";
 
 interface SidebarItemProps {
   navItem: NavElement;
@@ -21,7 +21,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({ navItem, pathname }) => {
         position: "relative",
       }}
     >
-      <Line href={navItem.href} />
+      <SidebarLine href={navItem.href} />
       <RouterLink href={navItem.href}>
         <Icon fontSize="small" htmlColor={isActive ? "#fff" : "#202224"} />
         <Typography

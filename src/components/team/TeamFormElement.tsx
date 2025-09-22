@@ -20,6 +20,7 @@ const TeamFormElement = ({ fields }: { fields: FieldsType[] }) => {
   });
 
   const onSubmit: SubmitHandler<MemberType> = (data) => {
+    console.log(data);
     toast.success("Team member added successfully!");
     control._reset();
   };

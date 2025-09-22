@@ -8,6 +8,7 @@ import {
   Divider,
 } from "@mui/material";
 import React from "react";
+import Line from "../ui/app-line";
 
 interface TypeStatusPopoverProps {
   anchorEl: HTMLElement | null;
@@ -84,15 +85,7 @@ const TypeStatusPopover: React.FC<TypeStatusPopoverProps> = ({
             })}
           </Box>
 
-          <Divider
-            sx={{
-              backgroundColor: "#979797",
-              width: "100%",
-              maxWidth: "521px",
-              height: "1px",
-              opacity: 0.5,
-            }}
-          />
+          <Line bgColor="#979797" maxwidth="521px" height={"1px"} />
 
           <Box>
             <Typography component={"span"} variant="body1" fontWeight={300}>

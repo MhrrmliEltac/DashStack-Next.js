@@ -72,3 +72,16 @@ export interface MemberType {
   gender: MemberGender;
   image?: string;
 }
+
+export type Feature = {
+  name: string;
+  isActive: boolean;
+};
+
+export type PricingPlan = {
+  name: string;
+  price: number;
+  features: Feature[];
+  buttonText: string;
+  trialLink: string;
+};

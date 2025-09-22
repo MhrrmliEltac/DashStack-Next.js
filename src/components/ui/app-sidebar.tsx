@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { Divider, List, ListItem, ListItemText } from "@mui/material";
+import { List, ListItem, ListItemText } from "@mui/material";
 import { Inventory2 } from "@mui/icons-material";
 import SpeedIcon from "@mui/icons-material/Speed";
 import GridViewIcon from "@mui/icons-material/GridView";
@@ -24,6 +24,7 @@ import { useSidebar } from "@/store/useSidebar";
 import SidebarContainer from "./app-sidebar-container";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import SettingsIcon from "@mui/icons-material/Settings";
+import Line from "./app-line";
 
 const sidebarNav: SidebarNav = {
   admin: [
@@ -149,7 +150,7 @@ const Sidebar = () => {
       </List>
 
       {/* Line */}
-      <Divider sx={{ width: "100%", height: "1px", background: "#E0E0E0" }} />
+      <Line bgColor="#E0E0E0" height={"1px"} />
 
       {/* Pages nav */}
       <List>
@@ -169,7 +170,7 @@ const Sidebar = () => {
       </List>
 
       {/* Line */}
-      <Divider sx={{ width: "100%", height: "1px", background: "#E0E0E0" }} />
+      <Line bgColor="#E0E0E0" height={"1px"} />
 
       {/* Preferences nav */}
       <List>

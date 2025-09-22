@@ -50,6 +50,9 @@ export const theme = createTheme({
       main: "rgba(98, 38, 239, 0.2)",
       contrastText: "#6226EF",
     },
+    grey: {
+      400: "rgba(33, 33, 33, 0.4)",
+    },
   },
   components: {
     MuiButton: {
