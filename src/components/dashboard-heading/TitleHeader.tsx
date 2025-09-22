@@ -23,7 +23,7 @@ const TitleHeader: React.FC<TitleHeaderProps> = ({
         alignItems: "center",
       }}
     >
-      <Box sx={{ mb: "23px" }}>
+      <Box sx={{ mb: "23px", display: "flex", alignItems: "center" }}>
         <Typography variant="h1">{title}</Typography>
       </Box>
 
@@ -33,7 +33,7 @@ const TitleHeader: React.FC<TitleHeaderProps> = ({
           variant="contained"
           color="secondary"
           href={href}
-          sx={{ maxWidth: "147px", height: "48px" }}
+          sx={{ maxWidth: "155px", height: "48px" }}
         >
           <Typography component={"span"} variant="button">
             {btnTitle}

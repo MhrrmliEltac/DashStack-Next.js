@@ -1,4 +1,4 @@
-import TitleHeader from "@/components/heading/TitleHeader";
+import TitleHeader from "@/components/dashboard-heading/TitleHeader";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import { Box, Button, Typography } from "@mui/material";
 import React from "react";

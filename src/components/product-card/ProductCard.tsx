@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import LeftArrowButton from "../ui/app-arrow-left-button";
 import RightArrowButton from "../ui/app-arrow-right-button";
-import { ProductCardProps } from "@/lib/types/types";
+import { ProductType } from "@/lib/types/types";
 import { Favorite, FavoriteBorderOutlined } from "@mui/icons-material";
 import { formatPrice } from "@/lib/helpers/formatPrice";
 import { useState } from "react";
@@ -22,7 +22,7 @@ const ProductCard = ({
   rating,
   ratingCount,
   image,
-}: ProductCardProps) => {
+}: ProductType) => {
   const [clickedFavorite, setClickedFavorite] = useState<boolean>(false);
 
   const handleFavorite = () => {

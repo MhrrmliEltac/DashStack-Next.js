@@ -1,8 +1,8 @@
-import TitleHeader from "@/components/heading/TitleHeader";
+import TitleHeader from "@/components/dashboard-heading/TitleHeader";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import ProductCard from "@/components/product-card/ProductCard";
 import { products } from "@/lib/_mock/products";
-import { ProductCardProps } from "@/lib/types/types";
+import { ProductType } from "@/lib/types/types";
 import { Grid } from "@mui/material";
 import React from "react";
 
@@ -13,7 +13,7 @@ const FavoritePage = () => {
 
       <Grid container spacing={3}>
         {products &&
-          products.map((product: ProductCardProps) => (
+          products.map((product: ProductType) => (
             <Grid key={product.id} size={{ xs: 12, md: 6, xl: 4 }}>
               <ProductCard
                 id={product.id}

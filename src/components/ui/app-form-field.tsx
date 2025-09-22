@@ -1,55 +1,99 @@
-// components/FormItem.tsx
+import { theme } from "@/theme/theme";
 import {
   FormControl,
   FormGroup,
   FormLabel,
+  MenuItem,
+  Select,
   TextField,
   TextareaAutosize,
+  Typography,
 } from "@mui/material";
 import React from "react";
+import { Control, Controller, FieldErrors } from "react-hook-form";
 
 type Props = {
   label: string;
   id: string;
-  type?: "text" | "email" | "textarea";
-  value?: string;
-  onChange?: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => void;
+  type?: "text" | "email" | "textarea" | "select" | "tel";
+  control: Control<any>;
+  error?: FieldErrors<any>;
 };
 
-const AppFormItem = ({
-  label,
-  id,
-  type = "text",
-  value = "",
-  onChange,
-}: Props) => {
+const AppFormItem = ({ label, id, type = "text", control, error }: Props) => {
+  const hasError = error?.[id]?.message;
+
+  const handleFocus = (
+    _: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
+    fieldOnChange: (value: string) => void,
+    currentValue: string
+  ) => {
+    if (type === "tel" && !currentValue.startsWith("+994")) {
+      fieldOnChange("+994");
+    }
+  };
+
   return (
     <FormControl fullWidth>
       <FormGroup>
         <FormLabel htmlFor={id}>{label}</FormLabel>
-        {type === "textarea" ? (
-          <TextareaAutosize
-            id={id}
-            value={value}
-            onChange={onChange}
-            minRows={5}
-            placeholder="Enter description..."
-            style={{
-              width: "100%",
-              backgroundColor: "#F5F6FA",
-              borderRadius: "8px",
-              border: "1px solid #D5D5D5",
-              padding: "10px",
-              fontFamily: "inherit",
-              fontSize: "16px",
-              resize: "vertical",
-              flex: "1",
-            }}
-          />
-        ) : (
-          <TextField id={id} fullWidth value={value} onChange={onChange} />
+
+        <Controller
+          name={id}
+          control={control}
+          defaultValue=""
+          render={({ field }) =>
+            type === "textarea" ? (
+              <TextareaAutosize
+                {...field}
+                id={id}
+                minRows={5}
+                placeholder="Enter description..."
+                style={{
+                  width: "100%",
+                  backgroundColor: "#F5F6FA",
+                  borderRadius: "8px",
+                  border: "1px solid #D5D5D5",
+                  padding: "10px",
+                  fontFamily: "inherit",
+                  fontSize: "16px",
+                  resize: "vertical",
+                }}
+              />
+            ) : type === "select" ? (
+              <Select
+                {...field}
+                fullWidth
+                id={id}
+                value={field.value || ""}
+                onChange={field.onChange}
+                displayEmpty
+              >
+                <MenuItem value="">
+                  <em>Choose one</em>
+                </MenuItem>
+                <MenuItem value="Female">Female</MenuItem>
+                <MenuItem value="Male">Male</MenuItem>
+              </Select>
+            ) : (
+              <TextField
+                {...field}
+                id={id}
+                fullWidth
+                type={type}
+                onFocus={(e) => handleFocus(e, field.onChange, field.value)}
+              />
+            )
+          }
+        />
+
+        {hasError && (
+          <Typography
+            variant="caption"
+            sx={{ color: theme.palette.error.contrastText, mt: 0.5 }}
+          >
+            {String(hasError)}
+          </Typography>
         )}
       </FormGroup>
     </FormControl>

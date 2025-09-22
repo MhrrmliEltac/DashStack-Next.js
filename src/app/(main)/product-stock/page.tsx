@@ -1,5 +1,5 @@
 "use client";
-import TitleHeader from "@/components/heading/TitleHeader";
+import TitleHeader from "@/components/dashboard-heading/TitleHeader";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import SearchInput from "@/components/product-stock/SearchInput";
 import StockTableList from "@/components/product-stock/StockTableList";

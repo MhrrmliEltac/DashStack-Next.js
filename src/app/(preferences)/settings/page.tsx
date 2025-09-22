@@ -1,23 +1,8 @@
-import TitleHeader from "@/components/heading/TitleHeader";
+import TitleHeader from "@/components/dashboard-heading/TitleHeader";
 import DashboardLayout from "@/components/layout/DashboardLayout";
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  Grid,
-  Typography,
-} from "@mui/material";
-import AppFormItem from "@/components/ui/app-form-field";
+import SettingsFormElement from "@/components/settings/SettingsFormElement";
+import { type FieldsType } from "@/lib/types/types";
 import React from "react";
-import AppAvatar from "@/components/ui/app-avatar";
-import AppFormButton from "@/components/ui/app-form-button";
-
-interface FieldsType {
-  id: string;
-  label: string;
-  type?: "text" | "email" | "textarea";
-}
 
 const fields: FieldsType[] = [
   { label: "Site Name", id: "site_name", type: "text" },
@@ -31,45 +16,8 @@ const SettingsPage = () => {
   return (
     <DashboardLayout>
       <TitleHeader title="General Settings" />
-
-      <Card
-        sx={{
-          maxHeight: "744px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <CardContent
-          sx={{
-            maxWidth: "780px",
-            maxHeight: "624px",
-          }}
-        >
-          {/* Avatar */}
-          <AppAvatar title="Upload Logo" />
-
-          {/* Form item */}
-          <Grid container spacing={3}>
-            {fields.map((field) => (
-              <Grid
-                size={{ xs: 12, md: field.type === "textarea" ? 12 : 6 }}
-                key={field.id}
-              >
-                <AppFormItem
-                  key={field.id}
-                  id={field.id}
-                  label={field.label}
-                  type={field.type && field.type}
-                />
-              </Grid>
-            ))}
-          </Grid>
-
-          {/* Save form button */}
-          <AppFormButton btnTitle="Save" />
-        </CardContent>
-      </Card>
+      {/* Add your form or content for adding a team member here */}{" "}
+      <SettingsFormElement fields={fields} />
     </DashboardLayout>
   );
 };

@@ -2,7 +2,7 @@ import CustomerCard from "@/components/dashboard/CustomerCard";
 import FeaturedProductCard from "@/components/dashboard/FeaturedProductCard";
 import RevenueCard from "@/components/dashboard/RevenueCard";
 import SalesAnalyticsCard from "@/components/dashboard/SalesAnalyticsCard";
-import TitleHeader from "@/components/heading/TitleHeader";
+import TitleHeader from "@/components/dashboard-heading/TitleHeader";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import { Grid } from "@mui/material";
 

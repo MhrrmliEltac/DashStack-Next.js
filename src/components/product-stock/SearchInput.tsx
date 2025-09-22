@@ -1,4 +1,5 @@
 "use client";
+import { useStock } from "@/store/useStock";
 import { Search } from "@mui/icons-material";
 import { InputAdornment, styled, TextField } from "@mui/material";
 import React from "react";
@@ -25,16 +26,26 @@ const CustomTextField = styled(TextField)({
 });
 
 const SearchInput = () => {
+  const stockStore = useStock();
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    stockStore.setQuery(event.target.value);
+  };
+
   return (
     <CustomTextField
       type="search"
       placeholder="Search product name"
-      InputProps={{
-        startAdornment: (
-          <InputAdornment position="start">
-            <Search sx={{ color: "#9E9E9E" }} />
-          </InputAdornment>
-        ),
+      value={stockStore.query}
+      onChange={handleChange}
+      slotProps={{
+        input: {
+          startAdornment: (
+            <InputAdornment position="start">
+              <Search sx={{ color: "#9E9E9E" }} />
+            </InputAdornment>
+          ),
+        },
       }}
     />
   );

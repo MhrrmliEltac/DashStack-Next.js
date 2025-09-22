@@ -1,7 +1,12 @@
+"use client";
 import { Box, Button, Typography } from "@mui/material";
 import React from "react";
 
-const AppFormButton = ({ btnTitle }: { btnTitle: string }) => {
+interface AppFormButtonProps {
+  btnTitle: string;
+}
+
+const AppFormButton = ({ btnTitle }: AppFormButtonProps) => {
   return (
     <Box
       sx={{
@@ -13,6 +18,7 @@ const AppFormButton = ({ btnTitle }: { btnTitle: string }) => {
       }}
     >
       <Button
+        type="submit"
         variant="contained"
         color="secondary"
         sx={{ borderRadius: "12px" }}

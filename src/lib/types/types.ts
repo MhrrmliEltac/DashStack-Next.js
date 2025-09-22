@@ -19,7 +19,7 @@ export interface CampaignBanner {
   description: string;
 }
 
-export interface ProductCardProps {
+export interface ProductType {
   id: string;
   productName: string;
   price: number;
@@ -46,4 +46,29 @@ export interface OrdersType {
   date: string;
   type: string;
   status: Status;
+}
+export interface FieldsType {
+  id: string;
+  label: string;
+  type?: "text" | "email" | "textarea" | "select" | "tel";
+}
+
+export interface SettingsType {
+  site_name: string;
+  copy_right: string;
+  seo_title: string;
+  seo_keyword: string;
+  seo_desc: string;
+}
+
+type MemberGender = "Male" | "Female";
+
+export interface MemberType {
+  first_name: string;
+  last_name: string;
+  email: string;
+  position: string;
+  phone_number: string;
+  gender: MemberGender;
+  image?: string;
 }

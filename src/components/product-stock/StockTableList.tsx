@@ -1,9 +1,8 @@
 "use client";
-import { products } from "@/lib/_mock/products";
 import { formatPrice } from "@/lib/helpers/formatPrice";
 import EditSquareIcon from "@mui/icons-material/EditSquare";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import { ProductCardProps } from "@/lib/types/types";
+import { ProductType } from "@/lib/types/types";
 import {
   TableContainer,
   Paper,
@@ -19,13 +18,16 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import React from "react";
+import { useStock } from "@/store/useStock";
 
 const ButtonElement = [
   {
+    name: "edit",
     icon: EditSquareIcon,
     color: "#000000",
   },
   {
+    name: "delete",
     icon: DeleteOutlineIcon,
     color: "#EF3826",
   },
@@ -41,6 +43,17 @@ const TABLE_HEAD = [
 ];
 
 const StockTableList = () => {
+  const stockStore = useStock();
+
+  const handleDeleteItemFromlist = (id: ProductType["id"], name: string) => {
+    const isDeleteBtn = name === ButtonElement[1].name;
+    const confirmMessage = confirm(`Are you sure to delete?`);
+
+    if (isDeleteBtn && confirmMessage) {
+      stockStore.deleteItem(id);
+    }
+  };
+
   return (
     <TableContainer component={Paper}>
       <Table>
@@ -60,8 +73,8 @@ const StockTableList = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {products &&
-            products.map((product: ProductCardProps, index: number) => (
+          {stockStore.stockData &&
+            stockStore.stockData.map((product: ProductType, index: number) => (
               <TableRow
                 key={product.id}
                 sx={{
@@ -125,6 +138,9 @@ const StockTableList = () => {
                           disableTouchRipple
                           key={index}
                           sx={{ p: 0, m: 0, minWidth: 0 }}
+                          onClick={() =>
+                            handleDeleteItemFromlist(product.id, btn.name)
+                          }
                         >
                           <Icon fontSize="small" htmlColor={btn.color} />
                         </Button>

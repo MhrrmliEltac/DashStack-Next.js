@@ -1,5 +1,5 @@
 import { Card, CardHeader, Box, Typography } from "@mui/material";
-import SalesAnalytics from "../sales-analytics-chart/SalesAnalytics";
+import SalesAnalytics from "./SalesAnalytics";
 
 const SalesAnalyticsCard = () => {
   return (

@@ -1,4 +1,4 @@
-import TitleHeader from "@/components/heading/TitleHeader";
+import TitleHeader from "@/components/dashboard-heading/TitleHeader";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import { Stack, Typography } from "@mui/material";
 import FilterListIcon from "@mui/icons-material/FilterList";

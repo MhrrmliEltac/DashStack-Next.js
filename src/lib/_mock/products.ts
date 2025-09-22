@@ -1,6 +1,6 @@
-import { ProductCardProps } from "../types/types";
+import { ProductType } from "../types/types";
 
-export const products: ProductCardProps[] = [
+export const products: ProductType[] = [
   {
     id: "101",
     productName: "Apple MacBook Pro 16″",
