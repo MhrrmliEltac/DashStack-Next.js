@@ -10,7 +10,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
 import { memberSchema } from "@/lib/validation/memberValidation";
 
-const TeamFormElement = ({ fields }: { fields: FieldsType[] }) => {
+const TeamFormElement = ({ fields }: { fields: FieldsType<MemberType>[] }) => {
   const {
     handleSubmit,
     formState: { errors },
@@ -46,7 +46,7 @@ const TeamFormElement = ({ fields }: { fields: FieldsType[] }) => {
 
           {/* Form item */}
           <Grid container spacing={3}>
-            {fields.map((field) => (
+            {fields.map((field: FieldsType<MemberType>) => (
               <Grid
                 size={{ xs: 12, md: field.type === "textarea" ? 12 : 6 }}
                 key={field.id}

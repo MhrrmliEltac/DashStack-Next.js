@@ -1,10 +1,10 @@
 import TitleHeader from "@/components/dashboard-heading/TitleHeader";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import TeamFormElement from "@/components/team/TeamFormElement";
-import { FieldsType } from "@/lib/types/types";
+import { FieldsType, MemberType } from "@/lib/types/types";
 import React from "react";
 
-const fields: FieldsType[] = [
+const fields: FieldsType<MemberType>[] = [
   { label: "First Name", id: "first_name", type: "text" },
   { label: "Last Name", id: "last_name", type: "text" },
   { label: "Your email", id: "email", type: "email" },

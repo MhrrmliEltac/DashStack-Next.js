@@ -10,17 +10,30 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import { Control, Controller, FieldErrors } from "react-hook-form";
+import {
+  Control,
+  Controller,
+  FieldErrors,
+  FieldValues,
+  Path,
+} from "react-hook-form";
 
-type Props = {
+type Props<T extends FieldValues> = {
   label: string;
-  id: string;
+  id: Path<T>;
   type?: "text" | "email" | "textarea" | "select" | "tel";
-  control: Control<any>;
-  error?: FieldErrors<any>;
+  control: Control<T>;
+  error?: FieldErrors<T>;
 };
 
-const AppFormItem = ({ label, id, type = "text", control, error }: Props) => {
+const AppFormItem = <T extends FieldValues>({
+  label,
+  id,
+  type = "text",
+  control,
+  error,
+}: Props<T>) => {
+  // error obyektində id varsa mesajı götür
   const hasError = error?.[id]?.message;
 
   const handleFocus = (
@@ -28,7 +41,7 @@ const AppFormItem = ({ label, id, type = "text", control, error }: Props) => {
     fieldOnChange: (value: string) => void,
     currentValue: string
   ) => {
-    if (type === "tel" && !currentValue.startsWith("+994")) {
+    if (type === "tel" && !currentValue?.toString().startsWith("+994")) {
       fieldOnChange("+994");
     }
   };
@@ -41,7 +54,7 @@ const AppFormItem = ({ label, id, type = "text", control, error }: Props) => {
         <Controller
           name={id}
           control={control}
-          defaultValue=""
+          defaultValue={"" as any} // T-yə görə defaultValue
           render={({ field }) =>
             type === "textarea" ? (
               <TextareaAutosize

@@ -47,8 +47,8 @@ export interface OrdersType {
   type: string;
   status: Status;
 }
-export interface FieldsType {
-  id: string;
+export interface FieldsType<T> {
+  id: keyof T;
   label: string;
   type?: "text" | "email" | "textarea" | "select" | "tel";
 }

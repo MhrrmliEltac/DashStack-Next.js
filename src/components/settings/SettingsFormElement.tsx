@@ -9,7 +9,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Card, CardContent, Grid } from "@mui/material";
 import toast from "react-hot-toast";
 
-const SettingsFormElement = ({ fields }: { fields: FieldsType[] }) => {
+const SettingsFormElement = ({
+  fields,
+}: {
+  fields: FieldsType<SettingsType>[];
+}) => {
   const {
     handleSubmit,
     formState: { errors },
