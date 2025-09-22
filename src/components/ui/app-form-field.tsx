@@ -54,7 +54,6 @@ const AppFormItem = <T extends FieldValues>({
         <Controller
           name={id}
           control={control}
-          defaultValue={"" as any} // T-yə görə defaultValue
           render={({ field }) =>
             type === "textarea" ? (
               <TextareaAutosize
