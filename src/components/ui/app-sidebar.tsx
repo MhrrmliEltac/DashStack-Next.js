@@ -86,11 +86,6 @@ const sidebarNav: SidebarNav = {
       href: "/invoice",
     },
     {
-      navName: "UI Elements",
-      icon: BarChartIcon,
-      href: "/ui-elements",
-    },
-    {
       navName: "Team",
       icon: PermIdentityIcon,
       href: "/team",

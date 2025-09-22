@@ -21,7 +21,7 @@ import {
 type Props<T extends FieldValues> = {
   label: string;
   id: Path<T>;
-  type?: "text" | "email" | "textarea" | "select" | "tel";
+  type?: "text" | "email" | "textarea" | "select" | "tel" | "date";
   control: Control<T>;
   error?: FieldErrors<T>;
 };
@@ -33,7 +33,6 @@ const AppFormItem = <T extends FieldValues>({
   control,
   error,
 }: Props<T>) => {
-  // error obyektində id varsa mesajı götür
   const hasError = error?.[id]?.message;
 
   const handleFocus = (
@@ -93,6 +92,7 @@ const AppFormItem = <T extends FieldValues>({
                 id={id}
                 fullWidth
                 type={type}
+                value={field.value || ""}
                 onFocus={(e) => handleFocus(e, field.onChange, field.value)}
               />
             )

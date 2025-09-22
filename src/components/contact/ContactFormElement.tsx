@@ -1,5 +1,5 @@
 "use client";
-import { FieldsType, MemberType } from "@/lib/types/types";
+import { FieldsType } from "@/lib/types/types";
 import { Card, CardContent, Grid } from "@mui/material";
 import React from "react";
 import AppAvatar from "../ui/app-avatar";
@@ -8,23 +8,29 @@ import AppFormItem from "../ui/app-form-field";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
-import { memberSchema } from "@/lib/validation/memberValidation";
+import {
+  contactFormSchema,
+  ContactFormType,
+} from "@/lib/validation/contactFormValidation";
 
-const TeamFormElement = ({ fields }: { fields: FieldsType<MemberType>[] }) => {
+const ContactFormElement = ({
+  fields,
+}: {
+  fields: FieldsType<ContactFormType>[];
+}) => {
   const {
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm<MemberType>({
-    resolver: zodResolver(memberSchema),
+    reset,
+  } = useForm<ContactFormType>({
+    resolver: zodResolver(contactFormSchema),
   });
 
-  console.log(fields);
-
-  const onSubmit: SubmitHandler<MemberType> = (data) => {
+  const onSubmit: SubmitHandler<ContactFormType> = (data) => {
     console.log(data);
     toast.success("Team member added successfully!");
-    control._reset();
+    reset();
   };
 
   return (
@@ -48,7 +54,7 @@ const TeamFormElement = ({ fields }: { fields: FieldsType<MemberType>[] }) => {
 
           {/* Form item */}
           <Grid container spacing={3}>
-            {fields.map((field: FieldsType<MemberType>) => (
+            {fields.map((field: FieldsType<ContactFormType>) => (
               <Grid
                 size={{ xs: 12, md: field.type === "textarea" ? 12 : 6 }}
                 key={field.id}
@@ -72,4 +78,4 @@ const TeamFormElement = ({ fields }: { fields: FieldsType<MemberType>[] }) => {
   );
 };
 
-export default TeamFormElement;
+export default ContactFormElement;

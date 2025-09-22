@@ -1,3 +1,4 @@
+import { extname } from "path";
 import React from "react";
 
 export interface NavElement {
@@ -50,7 +51,7 @@ export interface OrdersType {
 export interface FieldsType<T> {
   id: keyof T;
   label: string;
-  type?: "text" | "email" | "textarea" | "select" | "tel";
+  type?: "text" | "email" | "textarea" | "select" | "tel" | "date";
 }
 
 export interface SettingsType {
@@ -69,7 +70,7 @@ export interface MemberType {
   email: string;
   position: string;
   phone_number: string;
-  gender: MemberGender;
+  gender: "Male" | "Female";
   image?: string;
 }
 
