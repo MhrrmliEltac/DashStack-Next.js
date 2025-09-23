@@ -115,3 +115,19 @@ export interface TodoState {
   reset: () => void;
   resetChecked: () => void;
 }
+
+export type InvoiceDetailType = {
+  id: number;
+  description: string;
+  quantity: number;
+  price: number;
+  totalCost: number;
+};
+
+export interface InvoiceInfoType {
+  id: number;
+  invoiceFrom: string;
+  invoiceTo: string;
+  invoiceDate: string;
+  dueDate: string;
+}

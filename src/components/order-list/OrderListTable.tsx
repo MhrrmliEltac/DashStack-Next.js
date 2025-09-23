@@ -14,9 +14,11 @@ import {
 import React from "react";
 import CustomOrderStatusButton from "./CustomOrderStatusButton";
 import { useFilter } from "@/store/useFilter";
+import { usePagination } from "@/store/usePagination";
 
 const OrderListTable = () => {
   const filterState = useFilter();
+  const paginationStore = usePagination();
 
   const renderStatusButton = (status: Status) => {
     return <CustomOrderStatusButton status={status} />;
@@ -37,27 +39,29 @@ const OrderListTable = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {filterState.orders.map((body: OrdersType, index: number) => (
-            <TableRow
-              key={body.id}
-              sx={{
-                opacity: 0,
-                animation: `fadeIn 0.4s ease forwards`,
-                animationDelay: `${index * 0.06}s`,
-                transition: "background-color 0.3s ease",
-                "&:hover": {
-                  backgroundColor: "rgba(0, 0, 0, 0.04)",
-                },
-              }}
-            >
-              <TableCell>{body.id}</TableCell>
-              <TableCell>{body.name}</TableCell>
-              <TableCell>{body.address}</TableCell>
-              <TableCell>{body.date}</TableCell>
-              <TableCell>{body.type}</TableCell>
-              <TableCell>{renderStatusButton(body.status)}</TableCell>
-            </TableRow>
-          ))}
+          {filterState.orders
+            .slice(paginationStore.prevPage, paginationStore.nextPage)
+            .map((body: OrdersType, index: number) => (
+              <TableRow
+                key={body.id}
+                sx={{
+                  opacity: 0,
+                  animation: `fadeIn 0.4s ease forwards`,
+                  animationDelay: `${index * 0.06}s`,
+                  transition: "background-color 0.3s ease",
+                  "&:hover": {
+                    backgroundColor: "rgba(0, 0, 0, 0.04)",
+                  },
+                }}
+              >
+                <TableCell>{body.id}</TableCell>
+                <TableCell>{body.name}</TableCell>
+                <TableCell>{body.address}</TableCell>
+                <TableCell>{body.date}</TableCell>
+                <TableCell>{body.type}</TableCell>
+                <TableCell>{renderStatusButton(body.status)}</TableCell>
+              </TableRow>
+            ))}
         </TableBody>
       </Table>
     </TableContainer>

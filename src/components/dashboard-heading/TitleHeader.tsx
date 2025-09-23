@@ -21,9 +21,10 @@ const TitleHeader: React.FC<TitleHeaderProps> = ({
   addTodo,
 }) => {
   const todoStore = useTodo();
-
+  
   useEffect(() => {
     todoStore.resetChecked();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

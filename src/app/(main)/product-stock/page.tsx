@@ -3,6 +3,7 @@ import TitleHeader from "@/components/dashboard-heading/TitleHeader";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import SearchInput from "@/components/product-stock/SearchInput";
 import StockTableList from "@/components/product-stock/StockTableList";
+import AppPagination from "@/components/ui/app-pagination";
 import { Box } from "@mui/material";
 
 const ProductStockPage = () => {
@@ -21,6 +22,9 @@ const ProductStockPage = () => {
 
       {/* Product stock table */}
       <StockTableList />
+
+      {/* App pagination */}
+      <AppPagination />
     </DashboardLayout>
   );
 };

@@ -8,6 +8,7 @@ import OrderStatus from "@/components/order-list/OrderStatus";
 import ResetFilter from "@/components/order-list/ResetFilter";
 import CustomOrderStack from "@/components/order-list/CustomOrderStack";
 import OrderListTable from "@/components/order-list/OrderListTable";
+import AppPagination from "@/components/ui/app-pagination";
 
 const OrderListPage = () => {
   return (
@@ -56,6 +57,8 @@ const OrderListPage = () => {
 
       {/* Order list body */}
       <OrderListTable />
+
+      <AppPagination />
     </DashboardLayout>
   );
 };
