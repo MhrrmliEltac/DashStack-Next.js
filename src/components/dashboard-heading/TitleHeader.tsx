@@ -1,13 +1,16 @@
+"use client";
+
+import { useTodo } from "@/store/useTodo";
 import { Box, Button, Typography } from "@mui/material";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 
 interface TitleHeaderProps {
   title: string;
   btnTitle?: string;
   showBtn?: boolean;
   href?: string;
-  onClick?: () => void;
+  addTodo?: boolean;
 }
 
 const TitleHeader: React.FC<TitleHeaderProps> = ({
@@ -15,8 +18,14 @@ const TitleHeader: React.FC<TitleHeaderProps> = ({
   btnTitle,
   showBtn = false,
   href,
-  onClick,
+  addTodo,
 }) => {
+  const todoStore = useTodo();
+
+  useEffect(() => {
+    todoStore.resetChecked();
+  }, []);
+
   return (
     <Box
       sx={{
@@ -36,8 +45,11 @@ const TitleHeader: React.FC<TitleHeaderProps> = ({
           color="secondary"
           href={href}
           sx={{ maxWidth: "155px", height: "48px" }}
-          onClick={onClick}
-          onKeyDown={onClick}
+          onClick={() => {
+            if (addTodo) {
+              todoStore.handleAddTodo(todoStore.value);
+            }
+          }}
         >
           <Typography component={"span"} variant="button">
             {btnTitle}

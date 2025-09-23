@@ -3,7 +3,6 @@ import { TodoItem, TodoState } from "@/lib/types/types";
 import { ChangeEvent } from "react";
 import { create } from "zustand";
 
-
 export const useTodo = create<TodoState>((set, get) => ({
   todo: [
     {
@@ -17,12 +16,12 @@ export const useTodo = create<TodoState>((set, get) => ({
   ],
   favoriteTodo: [],
   value: "",
-  checked: false,
 
   handleAddTodo(value: string) {
-    set((state: TodoState) => ({
-      todo: [...state.todo, { id: generateId(), todoTitle: value }],
-    }));
+    if (!value)
+      set((state: TodoState) => ({
+        todo: [...state.todo, { id: generateId(), todoTitle: value }],
+      }));
   },
 
   handleRemoveTodo(id: string) {
@@ -36,9 +35,11 @@ export const useTodo = create<TodoState>((set, get) => ({
     }));
   },
 
-  handleChecked() {
+  handleChecked(id: string) {
     set((state: TodoState) => ({
-      checked: !state.checked,
+      todo: state.todo.map((t) =>
+        t.id === id ? { ...t, checked: !t.checked } : t
+      ),
     }));
   },
 
@@ -50,5 +51,15 @@ export const useTodo = create<TodoState>((set, get) => ({
 
   isFavorite(id: string) {
     return get().favoriteTodo.some((fav) => fav.id === id);
+  },
+
+  reset() {
+    set({ value: "" });
+  },
+
+  resetChecked() {
+    set((state: TodoState) => ({
+      todo: state.todo.map((t) => ({ ...t, checked: false })),
+    }));
   },
 }));

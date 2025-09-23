@@ -1,7 +1,8 @@
 "use client";
 import { TodoItem, TodoState } from "@/lib/types/types";
 import { useTodo } from "@/store/useTodo";
-import { Star, StarBorder, Clear } from "@mui/icons-material";
+import { theme } from "@/theme/theme";
+import { Star, StarBorder, Clear, Delete } from "@mui/icons-material";
 import {
   Card,
   CardContent,
@@ -9,15 +10,20 @@ import {
   Checkbox,
   Typography,
   Button,
+  IconButton,
 } from "@mui/material";
 import React from "react";
 
 const TodoListCard = () => {
   const todoStore: TodoState = useTodo();
 
+  const handleCheckClick = (id: string) => {
+    todoStore.handleChecked(id);
+  };
+
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-      {todoStore &&
+      {todoStore.todo &&
         todoStore.todo.map((todo: TodoItem) => (
           <Card
             key={todo.id}
@@ -27,6 +33,10 @@ const TodoListCard = () => {
               borderRadius: "12px",
               p: 0,
               m: 0,
+              backgroundColor: todo.checked
+                ? theme.palette.secondary.main
+                : "#fff",
+              transition: "all 0.1s ease-in-out",
             }}
           >
             <CardContent
@@ -38,37 +48,72 @@ const TodoListCard = () => {
                 px: "32px !important",
                 py: "34px !important",
                 height: "93px",
+                transition: "all 0.1s ease-in-out",
               }}
             >
               <Box>
                 <Checkbox
-                  value={todoStore.checked}
-                  onChange={() => todoStore.handleChecked()}
+                  sx={{
+                    color: todo.checked ? "white" : theme.palette.primary.main,
+                    "&.Mui-checked": {
+                      color: todo.checked
+                        ? "white"
+                        : theme.palette.primary.main,
+                    },
+                  }}
+                  value={todo.checked}
+                  onChange={() => handleCheckClick(todo.id)}
                 />
-                <Typography component={"span"}>{todo.todoTitle}</Typography>
-              </Box>
-              <Box sx={{ display: "flex", gap: "10px" }}>
-                <Button
-                  disableTouchRipple
-                  sx={{ minWidth: "0px" }}
-                  onClick={() => todoStore.handleAddFavorite(todo)}
+                <Typography
+                  component={"span"}
+                  sx={{
+                    color: todo.checked
+                      ? theme.palette.common.white
+                      : undefined,
+                  }}
                 >
-                  {todoStore.isFavorite(todo.id) ? (
-                    <Star htmlColor="#FFD56D" />
-                  ) : (
-                    <StarBorder />
-                  )}
-                </Button>
-                <Button
+                  {todo.todoTitle}
+                </Typography>
+              </Box>
+              {todo.checked ? (
+                <IconButton
                   disableTouchRipple
                   sx={{
-                    minWidth: "0px",
+                    maxWidth: "65px",
+                    maxHeight: "40px",
+                    px: "23px",
+                    py: "11px",
+                    backgroundColor: "#6C99FF",
+                    borderRadius: "12px",
                   }}
                   onClick={() => todoStore.handleRemoveTodo(todo.id)}
                 >
-                  <Clear fontSize="small" htmlColor="#B3B3B3" />
-                </Button>
-              </Box>
+                  <Delete htmlColor="white" />
+                </IconButton>
+              ) : (
+                <Box sx={{ display: "flex", gap: "10px" }}>
+                  <Button
+                    disableTouchRipple
+                    sx={{ minWidth: "0px" }}
+                    onClick={() => todoStore.handleAddFavorite(todo)}
+                  >
+                    {todoStore.isFavorite(todo.id) ? (
+                      <Star htmlColor="#FFD56D" />
+                    ) : (
+                      <StarBorder />
+                    )}
+                  </Button>
+                  <Button
+                    disableTouchRipple
+                    sx={{
+                      minWidth: "0px",
+                    }}
+                    onClick={() => todoStore.handleRemoveTodo(todo.id)}
+                  >
+                    <Clear fontSize="small" htmlColor="#B3B3B3" />
+                  </Button>
+                </Box>
+              )}
             </CardContent>
           </Card>
         ))}

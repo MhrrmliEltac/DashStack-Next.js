@@ -99,17 +99,19 @@ export interface Props {
 export interface TodoItem {
   id: string;
   todoTitle: string;
+  checked?: boolean;
 }
 
 export interface TodoState {
   todo: TodoItem[];
   favoriteTodo: TodoItem[];
   value: string;
-  checked: boolean;
   handleAddTodo: (value: string) => void;
   handleAddFavorite: (todo: TodoItem) => void;
   handleRemoveTodo: (id: string) => void;
-  handleChecked: () => void;
+  handleChecked: (id: string) => void;
   handleValue: (e: ChangeEvent<HTMLInputElement>) => void;
   isFavorite: (id: string) => boolean;
+  reset: () => void;
+  resetChecked: () => void;
 }
