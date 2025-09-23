@@ -5,8 +5,8 @@ import CustomOrderStack from "./CustomOrderStack";
 import CustomOrderButton from "./CustomOrderButton";
 import { useAnchor } from "../hooks/useAnchor";
 import { Status } from "@/lib/types/types";
-import TypeStatusPopover from "./TypeStatusPopover";
 import { useFilter } from "@/store/useFilter";
+import TypeStatusPoppper from "./TypeStatusPopover";
 
 const orderStatusElement: Status[] = [
   Status.Completed,
@@ -52,7 +52,7 @@ const OrderStatus = () => {
       />
 
       {/* Order status popover */}
-      <TypeStatusPopover
+      <TypeStatusPoppper
         anchorEl={anchorEl}
         open={open}
         orderElement={orderStatusElement}

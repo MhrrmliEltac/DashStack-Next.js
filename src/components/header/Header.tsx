@@ -14,18 +14,44 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import AppBadge from "../ui/app-badge";
 import { useSidebar } from "@/store/useSidebar";
+import NotificationPopper from "./NotificationPopper";
+import ProfilePopper from "./ProfilePopper";
+import React from "react";
 
 const Header = () => {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
+  const [openNotification, setOpenNotification] = React.useState(false);
+  const [anchorNotification, setAnchorNotification] =
+    React.useState<null | HTMLElement>(null);
 
-  const handleOpen = useSidebar((state) => state.handleOpen);
+  const [openProfile, setOpenProfile] = React.useState(false);
+  const [anchorProfile, setAnchorProfile] = React.useState<null | HTMLElement>(
+    null
+  );
+
+  const handleSidebarOpen = useSidebar((state) => state.handleOpen);
 
   const handleMediaQueryOpen = () => {
     if (isDesktop) {
-      handleOpen("desktop");
+      handleSidebarOpen("desktop");
     } else {
-      handleOpen("mobile");
+      handleSidebarOpen("mobile");
+    }
+  };
+
+  const handleOpenMenu = (
+    menu: "profile" | "notification",
+    event: React.MouseEvent<HTMLElement>
+  ) => {
+    if (menu === "notification") {
+      setOpenNotification((prev) => !prev);
+      setAnchorNotification(event.currentTarget);
+      setOpenProfile(false);
+    } else {
+      setOpenProfile((prev) => !prev);
+      setAnchorProfile(event.currentTarget);
+      setOpenNotification(false);
     }
   };
 
@@ -63,11 +89,22 @@ const Header = () => {
           />
         </Box>
         <Box sx={{ display: "flex", gap: "20px" }}>
-          <IconButton sx={{ position: "relative" }}>
+          <IconButton
+            sx={{ position: "relative" }}
+            onClick={(e) => handleOpenMenu("notification", e)}
+          >
             <AppBadge value={0} />
             <NotificationsIcon htmlColor="#3D42DF" fontSize={"medium"} />
           </IconButton>
-          <Box sx={{ display: "flex", gap: "20px", alignItems: "center" }}>
+          <Box
+            sx={{
+              display: "flex",
+              gap: "20px",
+              alignItems: "center",
+              cursor: "pointer",
+            }}
+            onClick={(e) => handleOpenMenu("profile", e)}
+          >
             <Avatar src="https://cdn.dribbble.com/userupload/30931998/file/original-878d353d1ea2f9271189f988a97717a1.jpg?resize=752x&vertical=center" />
             <Box sx={{ display: "flex", flexDirection: "column" }}>
               <Typography
@@ -100,6 +137,18 @@ const Header = () => {
           </Box>
         </Box>
       </nav>
+
+      <NotificationPopper
+        open={openNotification}
+        anchorEl={anchorNotification}
+        handleClose={() => setOpenNotification(false)}
+      />
+
+      <ProfilePopper
+        open={openProfile}
+        anchorEl={anchorProfile}
+        handleClose={() => setOpenProfile(false)}
+      />
     </header>
   );
 };

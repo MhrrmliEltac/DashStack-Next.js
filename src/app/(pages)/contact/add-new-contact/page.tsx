@@ -1,7 +1,6 @@
 import ContactFormElement from "@/components/contact/ContactFormElement";
 import TitleHeader from "@/components/dashboard-heading/TitleHeader";
 import DashboardLayout from "@/components/layout/DashboardLayout";
-import TeamFormElement from "@/components/team/TeamFormElement";
 import { FieldsType } from "@/lib/types/types";
 import { ContactFormType } from "@/lib/validation/contactFormValidation";
 import React from "react";

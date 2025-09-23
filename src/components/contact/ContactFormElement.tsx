@@ -29,7 +29,7 @@ const ContactFormElement = ({
 
   const onSubmit: SubmitHandler<ContactFormType> = (data) => {
     console.log(data);
-    toast.success("Team member added successfully!");
+    toast.success("Contact added successfully!");
     reset();
   };
 

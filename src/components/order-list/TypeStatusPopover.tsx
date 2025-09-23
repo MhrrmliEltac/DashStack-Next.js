@@ -9,7 +9,7 @@ import {
 import React from "react";
 import Line from "../ui/app-line";
 
-interface TypeStatusPopoverProps {
+interface TypeStatusPopperProps {
   anchorEl: HTMLElement | null;
   open: boolean;
   orderElement: string[];
@@ -19,7 +19,7 @@ interface TypeStatusPopoverProps {
   handleSubmit: () => void;
 }
 
-const TypeStatusPopover: React.FC<TypeStatusPopoverProps> = ({
+const TypeStatusPoppper: React.FC<TypeStatusPopperProps> = ({
   anchorEl,
   open,
   orderElement,
@@ -120,4 +120,4 @@ const TypeStatusPopover: React.FC<TypeStatusPopoverProps> = ({
   );
 };
 
-export default TypeStatusPopover;
+export default TypeStatusPoppper;

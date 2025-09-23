@@ -16,7 +16,6 @@ import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import { NavElement, SidebarNav } from "@/lib/types/types";
 import SidebarItem from "./app-sidebar-item";
 import PaymentsIcon from "@mui/icons-material/Payments";
-import BarChartIcon from "@mui/icons-material/BarChart";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import GridOnIcon from "@mui/icons-material/GridOn";
 import Logo from "../logo/logo";

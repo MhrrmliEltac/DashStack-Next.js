@@ -1,5 +1,4 @@
-import { extname } from "path";
-import React from "react";
+import React, { ChangeEvent } from "react";
 
 export interface NavElement {
   navName: string;
@@ -62,8 +61,6 @@ export interface SettingsType {
   seo_desc: string;
 }
 
-type MemberGender = "Male" | "Female";
-
 export interface MemberType {
   first_name: string;
   last_name: string;
@@ -86,3 +83,33 @@ export type PricingPlan = {
   buttonText: string;
   trialLink: string;
 };
+
+export interface PopperElementType {
+  id: number;
+  title: string;
+  icon: React.ReactNode;
+}
+
+export interface Props {
+  open: boolean;
+  anchorEl: null | HTMLElement;
+  handleClose: () => void;
+}
+
+export interface TodoItem {
+  id: string;
+  todoTitle: string;
+}
+
+export interface TodoState {
+  todo: TodoItem[];
+  favoriteTodo: TodoItem[];
+  value: string;
+  checked: boolean;
+  handleAddTodo: (value: string) => void;
+  handleAddFavorite: (todo: TodoItem) => void;
+  handleRemoveTodo: (id: string) => void;
+  handleChecked: () => void;
+  handleValue: (e: ChangeEvent<HTMLInputElement>) => void;
+  isFavorite: (id: string) => boolean;
+}

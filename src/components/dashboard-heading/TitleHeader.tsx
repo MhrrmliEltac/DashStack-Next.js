@@ -7,6 +7,7 @@ interface TitleHeaderProps {
   btnTitle?: string;
   showBtn?: boolean;
   href?: string;
+  onClick?: () => void;
 }
 
 const TitleHeader: React.FC<TitleHeaderProps> = ({
@@ -14,6 +15,7 @@ const TitleHeader: React.FC<TitleHeaderProps> = ({
   btnTitle,
   showBtn = false,
   href,
+  onClick,
 }) => {
   return (
     <Box
@@ -34,6 +36,8 @@ const TitleHeader: React.FC<TitleHeaderProps> = ({
           color="secondary"
           href={href}
           sx={{ maxWidth: "155px", height: "48px" }}
+          onClick={onClick}
+          onKeyDown={onClick}
         >
           <Typography component={"span"} variant="button">
             {btnTitle}

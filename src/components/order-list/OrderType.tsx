@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import CustomOrderStack from "./CustomOrderStack";
 import CustomOrderButton from "./CustomOrderButton";
 import { useAnchor } from "../hooks/useAnchor";
-import TypeStatusPopover from "./TypeStatusPopover";
 import { useFilter } from "@/store/useFilter";
+import TypeStatusPoppper from "./TypeStatusPopover";
 
 const orderTypeElement: string[] = [
   "Health & Medicine",
@@ -56,7 +56,7 @@ const OrderType = () => {
       />
 
       {/* Order type popover */}
-      <TypeStatusPopover
+      <TypeStatusPoppper
         anchorEl={anchorEl}
         open={open}
         orderElement={orderTypeElement}
