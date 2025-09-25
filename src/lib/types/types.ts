@@ -131,3 +131,33 @@ export interface InvoiceInfoType {
   invoiceDate: string;
   dueDate: string;
 }
+
+// reducer state
+
+export type MenuType = "profile" | "notification";
+
+export interface State {
+  openProfile: boolean;
+  anchorProfile: HTMLElement | null;
+  openNotification: boolean;
+  anchorNotification: HTMLElement | null;
+}
+
+export type Action =
+  | { type: "TOGGLE_MENU"; menu: MenuType; anchor: HTMLElement }
+  | { type: "CLOSE_MENU"; menu: MenuType };
+
+export enum EmailLabel {
+  Primary = "Primary",
+  Work = "Work",
+  Friends = "Friends",
+  Social = "Social",
+}
+
+export interface Email {
+  id: string;
+  sender: string;
+  subject: string;
+  time: string;
+  label: EmailLabel;
+}

@@ -30,6 +30,9 @@ const SidebarContainer: React.FC<SidebarContainerProps> = ({
           "& .MuiDrawer-paper": {
             width: 240,
             boxSizing: "border-box",
+            borderRadius: "0px",
+            borderTopRightRadius: "14px",
+            borderBottomRightRadius: "14px",
           },
         }}
       >

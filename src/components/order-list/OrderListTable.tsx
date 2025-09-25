@@ -15,13 +15,16 @@ import React from "react";
 import CustomOrderStatusButton from "./CustomOrderStatusButton";
 import { useFilter } from "@/store/useFilter";
 import { usePagination } from "@/store/usePagination";
+import { STATUS_STYLES } from "@/lib/constants/statusStyles";
 
 const OrderListTable = () => {
   const filterState = useFilter();
   const paginationStore = usePagination();
 
   const renderStatusButton = (status: Status) => {
-    return <CustomOrderStatusButton status={status} />;
+    return (
+      <CustomOrderStatusButton status={status} style={STATUS_STYLES[status]} />
+    );
   };
 
   return (

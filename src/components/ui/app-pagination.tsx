@@ -25,6 +25,7 @@ const AppPagination = () => {
       flexDirection={"row"}
       justifyContent={"space-between"}
       sx={{ mt: "22px" }}
+      width={"100%"}
     >
       <Typography
         component={"span"}

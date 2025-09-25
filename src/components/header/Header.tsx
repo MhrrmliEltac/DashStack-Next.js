@@ -16,19 +16,22 @@ import AppBadge from "../ui/app-badge";
 import { useSidebar } from "@/store/useSidebar";
 import NotificationPopper from "./NotificationPopper";
 import ProfilePopper from "./ProfilePopper";
-import React from "react";
+import React, { useReducer } from "react";
+import { State } from "@/lib/types/types";
+import { reducer } from "@/utils/reducer";
 
 const Header = () => {
+  const initialState: State = {
+    openProfile: false,
+    anchorProfile: null,
+    openNotification: false,
+    anchorNotification: null,
+  };
+
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
-  const [openNotification, setOpenNotification] = React.useState(false);
-  const [anchorNotification, setAnchorNotification] =
-    React.useState<null | HTMLElement>(null);
 
-  const [openProfile, setOpenProfile] = React.useState(false);
-  const [anchorProfile, setAnchorProfile] = React.useState<null | HTMLElement>(
-    null
-  );
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleSidebarOpen = useSidebar((state) => state.handleOpen);
 
@@ -42,17 +45,9 @@ const Header = () => {
 
   const handleOpenMenu = (
     menu: "profile" | "notification",
-    event: React.MouseEvent<HTMLElement>
+    e: React.MouseEvent<HTMLElement>
   ) => {
-    if (menu === "notification") {
-      setOpenNotification((prev) => !prev);
-      setAnchorNotification(event.currentTarget);
-      setOpenProfile(false);
-    } else {
-      setOpenProfile((prev) => !prev);
-      setAnchorProfile(event.currentTarget);
-      setOpenNotification(false);
-    }
+    dispatch({ type: "TOGGLE_MENU", menu, anchor: e.currentTarget });
   };
 
   return (
@@ -139,15 +134,17 @@ const Header = () => {
       </nav>
 
       <NotificationPopper
-        open={openNotification}
-        anchorEl={anchorNotification}
-        handleClose={() => setOpenNotification(false)}
+        open={state.openNotification}
+        anchorEl={state.anchorNotification}
+        handleClose={() =>
+          dispatch({ type: "CLOSE_MENU", menu: "notification" })
+        }
       />
 
       <ProfilePopper
-        open={openProfile}
-        anchorEl={anchorProfile}
-        handleClose={() => setOpenProfile(false)}
+        open={state.openProfile}
+        anchorEl={state.anchorProfile}
+        handleClose={() => dispatch({ type: "CLOSE_MENU", menu: "profile" })}
       />
     </header>
   );

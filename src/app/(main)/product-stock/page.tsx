@@ -9,16 +9,7 @@ import { Box } from "@mui/material";
 const ProductStockPage = () => {
   return (
     <DashboardLayout>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <TitleHeader title="Product Stock" />
-        <SearchInput />
-      </Box>
+      
 
       {/* Product stock table */}
       <StockTableList />

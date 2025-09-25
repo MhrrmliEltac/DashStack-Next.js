@@ -3,15 +3,16 @@ import { Status } from "@/lib/types/types";
 import { Chip, TypographyProps } from "@mui/material";
 import React, { FC } from "react";
 
+interface Style {
+  bgColor: string;
+  color: string;
+}
 interface ButtonProps {
-  bgColor?: string;
-  status: Status;
-  color?: TypographyProps["color"];
+  status: string;
+  style: Style;
 }
 
-const CustomOrderStatusButton: FC<ButtonProps> = ({ status }) => {
-  const style = STATUS_STYLES[status];
-
+const CustomOrderStatusButton: FC<ButtonProps> = ({ status, style }) => {
   return (
     <Chip
       sx={{
